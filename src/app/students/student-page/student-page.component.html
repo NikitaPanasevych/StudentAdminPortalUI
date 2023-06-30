@@ -118,13 +118,21 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button
-                            (click)="onUpdate()"
-                            type="submit" 
-                            mat-raised-button 
-                            color="primary">
-                            Save Changes
-                        </button>  
+                        <div class="row between-xs">
+                            <button
+                                (click)="onUpdate()"
+                                type="submit" 
+                                mat-raised-button 
+                                color="primary">
+                                Save Changes
+                            </button> <button
+                                (click)="onDelete()"
+                                type="submit" 
+                                mat-raised-button 
+                                color="warn">
+                                Delete
+                            </button>   
+                        </div>
                     </div>
                 </div>
             </form>
