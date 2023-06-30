@@ -7,8 +7,7 @@
 <div class="container">
     <div class="row end-xs mt-1">
             <div class="col-xs-12">
-                <p>
-                    <mat-form-field appearance="outline">
+                      <mat-form-field appearance="outline">
                       <mat-label>Search...</mat-label>
                       <input type="text" matInput placeholder="Placeholder"
                       [(ngModel)]="filterString"
@@ -16,7 +15,10 @@
                       >
                       <mat-icon matSuffix>search</mat-icon>
                     </mat-form-field>
-                  </p>
+                    <a routerLink="/students/add" class="ml-1" mat-raised-button color="primary">
+                      Add New Student
+                    </a>
+                    
             </div>
         </div>
     <div class="table-container mat-elevation-z8">

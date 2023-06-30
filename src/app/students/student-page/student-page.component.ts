@@ -27,6 +27,9 @@ export class StudentPageComponent {
         address: { id: '', physicalAddress: '', postalAddress: '' },
     };
 
+    isNewStudent: boolean = true;
+    header = '';
+
     genderList : Gender[] = []
   
     constructor(
@@ -41,6 +44,16 @@ export class StudentPageComponent {
         this.route.paramMap.subscribe(params => {
             this.studentId = params.get('id');
             if(this.studentId){
+
+                if(this.studentId.toLocaleLowerCase() === 'add'.toLocaleLowerCase()){
+                    this.isNewStudent = true;
+                    this.header = 'Add Student';
+                }
+                else{
+                    this.isNewStudent = false;
+                    this.header = 'Edit Student';
+                }
+
                 this.studentService.getStudentById(this.studentId)
                 .subscribe((successResponse) => {
                     this.student = successResponse;
@@ -83,4 +96,21 @@ export class StudentPageComponent {
         );
     }
 
+    onAdd(): void {
+        this.studentService.addStudent(this.student)
+            .subscribe((successResponse) => {
+                console.log(successResponse);
+                this.snackbar.open("Student added successfully", undefined, {
+                    duration: 2000,
+                });
+                //Return to the student list page
+                setTimeout(() => {
+                    this.router.navigate(['/students'])
+                }, 2000);
+            },
+            (errorResponse) => {
+                console.log(errorResponse);
+            }
+        );
+    }
 }
