@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-xs-6">
-            <form #studentDetailsForm="ngForm" action="post">
+            <form  #studentDetailsForm="ngForm" action="post">
                 <div class="row">
                     <div class="col-xs-6">
                         <mat-form-field appearance="outline">
@@ -22,20 +22,25 @@
                             <input 
                                 type="text" 
                                 [(ngModel)]="student.firstName" 
-                                matInput  
+                                matInput
+                                required
                                 placeholder="First Name" 
                                 name="firstName"
                             >
+                            <mat-error>Required</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-xs-6">
                         <mat-form-field appearance="outline">
                             <mat-label>Last Name</mat-label>
                             <input 
-                                matInput 
+                                matInput
+                                required
                                 [(ngModel)]="student.lastName"  
                                 placeholder="Last Name" 
-                                name="lastName">
+                                name="lastName"
+                            >
+                            <mat-error>Required</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -45,10 +50,12 @@
                             <mat-label>Choose a date</mat-label>
                             <input 
                                 [(ngModel)]="student.dateOfBirth"  
-                                matInput 
+                                matInput
+                                required
                                 [matDatepicker]="picker"
                                 name="dateOfBirth"
                             >
+                            <mat-error>Required</mat-error>
                             <mat-hint>MM/DD/YYYY</mat-hint>
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
@@ -61,9 +68,12 @@
                                 <mat-label>Email</mat-label>
                                 <input 
                                     [(ngModel)]="student.email"
-                                    matInput  
+                                    matInput
+                                    required
                                     placeholder="Email" 
-                                    name="Email">
+                                    name="Email"
+                                >
+                                <mat-error>Required</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-xs-6">
@@ -71,9 +81,12 @@
                                 <mat-label>Mobile</mat-label>
                                 <input 
                                     [(ngModel)]="student.mobile"
-                                    matInput  
+                                    matInput
+                                    required
                                     placeholder="Mobile" 
-                                    name="Mobile">
+                                    name="Mobile"
+                                >
+                                <mat-error>Required</mat-error>
                             </mat-form-field>
                         </div>
                 </div>
@@ -84,11 +97,13 @@
                             <mat-select 
                                 [(ngModel)]="student.genderId"
                                 name="gender"
+                                required
                             >
                                 <mat-option *ngFor="let gender of genderList" [value]="gender.id">
                                     {{gender.description}}
                                 </mat-option>
                             </mat-select>
+                            <mat-error>Required</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -99,8 +114,10 @@
                             <textarea 
                                 [(ngModel)]="student.address.physicalAddress"  
                                 matInput
+                                required
                                 name="physical Address"
                             ></textarea>
+                            <mat-error>Required</mat-error>
                           </mat-form-field> 
                     </div>
                 </div>
@@ -111,8 +128,10 @@
                             <textarea 
                                 [(ngModel)]="student.address.postalAddress" 
                                 matInput
+                                required
                                 name="postal Address"
                             ></textarea>
+                            <mat-error>Required</mat-error>
                           </mat-form-field> 
                     </div>
                 </div>
@@ -169,6 +188,7 @@
                         >
                             Upload Image
                         </button>
+                        <mat-error>{{uploadImageErrorMessage}}</mat-error>
                 </div>
         </div>
     </div>
